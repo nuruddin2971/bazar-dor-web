@@ -20,7 +20,7 @@ const Marquee = async () => {
     "https://openapi.programming-hero.com/api/bazardor/products",
   );
   const data: Marq[] = await res.json();
-  console.log("data from marquee", data);
+
   return (
     <div className="w-full bg-white border-b border-default-200 py-3 overflow-hidden">
       <div>
