@@ -1,9 +1,25 @@
 import React from "react";
 
-const TopFallers = ({ topFallersProducts }) => {
+interface IFallers {
+  id: string;
+  image: string;
+  nameBn: string;
+  today: number;
+  unit: string;
+  change: {
+    dir: string;
+    pct: number;
+  };
+}
+
+const TopFallers = ({
+  topFallersProducts,
+}: {
+  topFallersProducts: IFallers[];
+}) => {
   return (
     <div className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10 min-h-screen">
-      <div className="max-w-7xl mx-auto">
+      <div className="">
         <div className="flex items-center gap-2 mb-5 sm:mb-6">
           <span className="text-green-500 text-sm">▼</span>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900">

@@ -8,8 +8,8 @@ const Banner = ({}) => {
 
   return (
     <div>
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-        <div className="bg-default-50 border border-default-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-6 lg:gap-12">
+      <section className="w-full sm:px-6 py-4 sm:py-6 lg:py-8">
+        <div className="bg-default-50 border border-gray-300 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-6 lg:gap-12">
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left max-w-xl">
             <div className="inline-block bg-[#E8F5E9] text-[#05893E] font-medium text-xs sm:text-sm px-3.5 py-1.5 rounded-full mb-4">
               {date}

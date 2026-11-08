@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 w-full border-b border-default-200 bg-default-50">
+      <header className="sticky top-0 z-50 w-full border-b border-gray-300 bg-default-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
 
           <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
