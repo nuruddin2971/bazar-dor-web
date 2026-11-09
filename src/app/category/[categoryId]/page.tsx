@@ -1,12 +1,26 @@
 import React from "react";
 
-const CategoryPage = async ({ params }) => {
+interface IDropdown {
+  id: string;
+  categoryIcon: string;
+  categoryNameBn: string;
+  unit: string;
+  image: string;
+  nameBn: string;
+  today: number;
+  change: {
+    dir: "up" | "down" | "flat";
+    pct: number;
+  };
+}
+
+const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
   const { categoryId } = await params;
 
   const res = await fetch(
     `https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`,
   );
-  const resData = await res.json();
+  const resData: IDropdown[] = await res.json();
   const data = resData.filter((item) => item.change.dir !== "flat");
 
   return (

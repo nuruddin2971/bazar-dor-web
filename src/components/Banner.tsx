@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Banner = ({}) => {
@@ -24,9 +25,11 @@ const Banner = ({}) => {
               বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
             </p>
 
-            <button className="btn btn-active btn-success btn-sm sm:btn-md flex-1 sm:flex-none">
-              সব পণ্য দেখুন
-            </button>
+            <Link href={"/#all-products"}>
+              <button className="btn btn-active btn-success btn-sm sm:btn-md flex-1 sm:flex-none">
+                সব পণ্য দেখুন
+              </button>
+            </Link>
           </div>
 
           <div className="w-full md:w-1/2 flex justify-center items-center flex-shrink-0">

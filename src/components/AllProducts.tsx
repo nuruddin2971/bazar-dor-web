@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface IProduct {
@@ -20,7 +21,10 @@ const AllProducts = async () => {
 
   //   console.log(allProducts, "from AllProducts");
   return (
-    <div className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10 min-h-screen">
+    <div
+      id="all-products"
+      className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10 min-h-screen"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-2 mb-5 sm:mb-6">
           <span className="text-green-500 text-sm">▼</span>
@@ -33,7 +37,9 @@ const AllProducts = async () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {data.map((product) => (
-            <div
+            // <Link href={`/productDetails/$productDetails.id`}>
+            <Link
+              href={`/productDetails/$productDetails.id`}
               key={product.id}
               className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between"
             >
@@ -81,7 +87,8 @@ const AllProducts = async () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
+            // </Link>
           ))}
         </div>
       </div>
