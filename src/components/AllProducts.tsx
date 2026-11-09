@@ -39,7 +39,7 @@ const AllProducts = async () => {
           {data.map((product) => (
             // <Link href={`/productDetails/$productDetails.id`}>
             <Link
-              href={`/productDetails/$productDetails.id`}
+              href={`/productDetails/${product.id}`}
               key={product.id}
               className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between"
             >

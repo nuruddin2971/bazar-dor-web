@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface IDropdown {
@@ -23,7 +24,7 @@ const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
   const resData: IDropdown[] = await res.json();
   const data = resData.filter((item) => item.change.dir !== "flat");
 
-  return (
+  return data && data.length > 0 ? (
     <div className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10 min-h-screen">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -138,6 +139,16 @@ const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
           ))}
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+      <h1 className="text-6xl font-bold text-gray-800 mb-4">404</h1>
+      <p className="text-xl text-gray-600 mb-6">Page is invalid!</p>
+      <Link href={"/"}>
+        <button className="btn btn-active btn-success btn-sm sm:btn-md flex-1 sm:flex-none">
+          হোম পেজে ফিরে যান
+        </button>
+      </Link>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const TopRisers = ({ topRisersProducts }: { topRisersProducts: IRisers[] }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {topRisersProducts.map((product) => (
             <Link
-              href={`/productDetails/$productDetails.id`}
+              href={`/productDetails/${product.id}`}
               key={product.id}
               className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between"
             >
