@@ -33,7 +33,13 @@ const SignInPage = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    console.log(data, "from sign in");
+    // console.log(data, "from sign in");
+  };
+
+  const handleGithubSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
   };
 
   return (
@@ -68,9 +74,14 @@ const SignInPage = () => {
           </button>
         </fieldset>
       </form>
-      <button onClick={handleGoogleSignIn} className="btn">
-        Sign In With Google
-      </button>
+      <div className="flex gap-25 py-4">
+        <button onClick={handleGoogleSignIn} className="btn">
+          Sign In With Google
+        </button>
+        <button onClick={handleGithubSignIn} className="btn">
+          Sign In With Github
+        </button>
+      </div>
     </div>
   );
 };

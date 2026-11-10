@@ -37,6 +37,21 @@ const SignUpPage = () => {
       console.log(error);
     }
   };
+
+  const handleGoogleSignUp = async () => {
+      const data = await authClient.signIn.social({
+        provider: "google",
+      });
+      // console.log(data, "from sign in");
+    };
+  
+    const handleGithubSignUp = async () => {
+      const data = await authClient.signIn.social({
+        provider: "github",
+      });
+    };
+
+
   return (
     <div className="flex flex-col items-center justify-center mt-5">
       <h2 className="text-base sm:text-lg font-bold text-default-900 leading-tight">
@@ -85,6 +100,14 @@ const SignUpPage = () => {
           </button>
         </fieldset>
       </form>
+      <div className="flex gap-25 py-4">
+        <button onClick={handleGoogleSignUp} className="btn">
+          Sign Up With Google
+        </button>
+        <button onClick={handleGithubSignUp} className="btn">
+          Sign Up With Github
+        </button>
+      </div>
     </div>
   );
 };
