@@ -29,6 +29,13 @@ const SignInPage = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data, "from sign in");
+  };
+
   return (
     <div className="flex flex-col items-center justify-center mt-5">
       <h2 className="text-base sm:text-lg font-bold text-default-900 leading-tight">
@@ -61,6 +68,9 @@ const SignInPage = () => {
           </button>
         </fieldset>
       </form>
+      <button onClick={handleGoogleSignIn} className="btn">
+        Sign In With Google
+      </button>
     </div>
   );
 };
