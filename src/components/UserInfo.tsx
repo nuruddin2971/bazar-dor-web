@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
-
   const user = session?.user;
 
   const handleSignOut = async () => {
@@ -23,13 +22,15 @@ const UserInfo = () => {
     <div className="w-full sm:w-auto">
       {user ? (
         <div className="flex items-center justify-end gap-3">
-          <div className="flex items-center justify-end gap-3">
-            <div className="avatar avatar-placeholder">
-              <div className="bg-neutral text-neutral-content w-8 rounded-full">
-                <span className="text-xs">UI</span>
+          <Link href={"/profile"}>
+            <div className="flex items-center justify-end gap-3">
+              <div className="avatar avatar-placeholder">
+                <div className="bg-neutral text-neutral-content w-8 rounded-full">
+                  <span className="text-xs">Profile</span>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="hidden sm:flex flex-col min-w-0">
             <p className="text-sm font-semibold text-default-900 truncate max-w-36">
