@@ -7,6 +7,8 @@ const ProfilePage = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
+ 
+
   const [show, setShow] = useState(false);
 
   const handleUpdateProfile = async (e: React.SubmitEvent<HTMLElement>) => {
