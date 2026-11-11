@@ -31,14 +31,13 @@ const SignInPage = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "google",
     });
-    // console.log(data, "from sign in");
   };
 
   const handleGithubSignIn = async () => {
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "github",
     });
   };
@@ -55,7 +54,6 @@ const SignInPage = () => {
         </p>
       </div>
 
-  
       <div className="w-full max-w-md bg-white rounded-2xl border border-gray-200/80 p-6 sm:p-8 shadow-sm">
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
@@ -100,7 +98,6 @@ const SignInPage = () => {
           </span>
         </div>
 
-     
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
@@ -155,7 +152,6 @@ const SignInPage = () => {
         </div>
       </div>
 
-   
       <Link
         href="/"
         className="mt-6 text-xs text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1"

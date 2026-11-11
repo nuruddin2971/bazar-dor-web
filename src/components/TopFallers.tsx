@@ -56,7 +56,7 @@ const TopFallers = ({
                     আজকের দাম
                   </p>
                   <p className="text-xl font-extrabold text-gray-900 leading-none">
-                    {product.today}
+                    {product.today.toLocaleString("bn-BD")}
                     <span className="text-base sm:text-lg font-bold text-gray-800 ml-0.5">
                       টাকা
                     </span>
@@ -65,7 +65,7 @@ const TopFallers = ({
 
                 <div className="bg-[#f2f7f2] text-[#1A9951] px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-1 shrink-0">
                   <span className="text-[10px]">▼</span>
-                  <span>{product.change.pct}%</span>
+                  <span>{product.change.pct.toLocaleString("bn-BD")}%</span>
                 </div>
               </div>
             </Link>

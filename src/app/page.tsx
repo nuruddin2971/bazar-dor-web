@@ -2,7 +2,6 @@ import AllProducts from "@/components/AllProducts";
 import Banner from "@/components/Banner";
 import TopFallers from "@/components/TopFallers";
 import TopRisers from "@/components/TopRisers";
-import Image from "next/image";
 
 interface IProduct {
   id: string;

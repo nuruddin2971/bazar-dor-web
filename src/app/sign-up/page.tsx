@@ -2,7 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -39,13 +39,13 @@ const SignUpPage = () => {
   };
 
   const handleGoogleSignUp = async () => {
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "google",
     });
   };
 
   const handleGithubSignUp = async () => {
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "github",
     });
   };

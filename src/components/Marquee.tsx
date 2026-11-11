@@ -37,7 +37,7 @@ const Marquee = async () => {
                 </div>
 
                 <span className="text-default-600">
-                  {product.today} টাকা/{product.unit}
+                  {product.today.toLocaleString("bn-BD")} টাকা/{product.unit}
                 </span>
 
                 <span
@@ -48,7 +48,7 @@ const Marquee = async () => {
                   }
                 >
                   <span>{product.change.dir === "up" ? "▲" : "▼"}</span>
-                  <span>{Math.abs(product.change.pct)}%</span>
+                  <span>{Math.abs(product.change.pct).toLocaleString("bn-BD")}%</span>
                 </span>
               </div>
             ))}

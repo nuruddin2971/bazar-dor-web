@@ -37,7 +37,7 @@ const AllProducts = async () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {data.map((product) => (
-            // <Link href={`/productDetails/$productDetails.id`}>
+            
             <Link
               href={`/productDetails/${product.id}`}
               key={product.id}
@@ -64,7 +64,7 @@ const AllProducts = async () => {
                     আজকের দাম
                   </p>
                   <p className="text-xl font-extrabold text-gray-900 leading-none">
-                    {product.today}
+                    {product.today.toLocaleString("bn-BD")}
                     <span className="text-base sm:text-lg font-bold text-gray-800 ml-0.5">
                       টাকা
                     </span>
@@ -82,7 +82,7 @@ const AllProducts = async () => {
                     <span>
                       {product.change.dir === "flat"
                         ? "-00%"
-                        : `${product.change.dir === "up" ? "▲" : "▼"} ${Math.abs(product.change.pct)}%`}
+                        : `${product.change.dir === "up" ? "▲" : "▼"} ${Math.abs(product.change.pct).toLocaleString("bn-BD")}%`}
                     </span>
                   </span>
                 </div>

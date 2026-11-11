@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CategoryDropDownPage from "./CategoryDropDown";
 import { IDropdown } from "@/app/category/[categoryId]/page";
+import Link from "next/link";
 
 interface SortedPagePrps {
   resData: IDropdown[];
@@ -26,7 +27,8 @@ const SortedPage = ({ resData, data }: SortedPagePrps) => {
                 {data[0]?.categoryNameBn}
               </h2>
               <p className="text-sm sm:text-base text-gray-500 mt-1">
-                {data.length} টি পণ্যের আজকের দাম ও পরিবর্তন
+                {data.length.toLocaleString("bn-BD")} টি পণ্যের আজকের দাম ও
+                পরিবর্তন
               </p>
             </div>
           </div>
@@ -39,12 +41,16 @@ const SortedPage = ({ resData, data }: SortedPagePrps) => {
         </div>
 
         <div className="text-sm sm:text-base text-gray-500 mt-1">
-          <p>মোট {resData.length}টি পণ্য দেখানো হচ্ছে</p>
+          <p>
+            মোট {resData.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+          {/* <Link href={`/productDetails/${product.id}`}> */}
           {categorySort.map((product) => (
-            <div
+            <Link
+              href={`/productDetails/${product.id}`}
               key={product.id}
               className="bg-white rounded-3xl p-5 sm:p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between"
             >
@@ -69,7 +75,7 @@ const SortedPage = ({ resData, data }: SortedPagePrps) => {
                     আজকের দাম
                   </p>
                   <p className="text-xl font-extrabold text-gray-900 leading-none">
-                    {product.today}
+                    {product.today.toLocaleString("bn-BD")}
                     <span className="text-base sm:text-lg font-bold text-gray-800 ml-0.5">
                       টাকা
                     </span>
@@ -87,12 +93,12 @@ const SortedPage = ({ resData, data }: SortedPagePrps) => {
                     <span>
                       {product.change.dir === "flat"
                         ? "-00%"
-                        : `${product.change.dir === "up" ? "▲" : "▼"} ${Math.abs(product.change.pct)}%`}
+                        : `${product.change.dir === "up" ? "▲" : "▼"} ${Math.abs(product.change.pct).toLocaleString("bn-BD")}%`}
                     </span>
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

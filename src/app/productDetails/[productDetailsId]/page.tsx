@@ -1,7 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
 interface IMarket {
   market: string;
   division: string;
@@ -27,6 +24,7 @@ interface IProduct {
     pct: number;
   };
   markets: IMarket[];
+  error?: string;
 }
 
 const ProductDetailsPage = async ({
@@ -44,7 +42,7 @@ const ProductDetailsPage = async ({
   const data = await res.json();
   const product: IProduct = data;
 
-  console.log("product from category", product);
+  // console.log("product from category", product);
   if (!product || product?.error) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
@@ -108,7 +106,7 @@ const ProductDetailsPage = async ({
                 গতকালের তুলনায় আজ দাম
                 {product.change?.dir === "up" ? " বেড়েছে " : " কমেছে "}
                 <span className="font-semibold text-gray-700">
-                  {priceDiff} টাকা
+                  {priceDiff.toLocaleString("bn-BD")} টাকা
                 </span>
               </p>
             </div>
@@ -117,7 +115,7 @@ const ProductDetailsPage = async ({
           <div className="bg-[#f7f9f7] rounded-xl p-4 sm:p-5 text-center min-w-[160px] border border-gray-100 flex flex-col items-center justify-center self-stretch md:self-auto">
             <span className="text-xs text-gray-500 font-medium">আজকের দাম</span>
             <div className="text-3xl sm:text-4xl font-extrabold text-gray-900 my-1">
-              {product.today}
+              {product.today.toLocaleString("bn-BD")}
             </div>
             <span className="text-xs text-gray-400 font-medium">
               টাকা / {product.unit === "kg" ? "কেজি" : product.unit}
@@ -131,7 +129,7 @@ const ProductDetailsPage = async ({
                 }`}
               >
                 <span>{product.change?.dir === "up" ? "▲" : "▼"}</span>
-                <span>{product.change.pct} %</span>
+                <span>{product.change.pct.toLocaleString("bn-BD")} %</span>
               </div>
             )}
           </div>
@@ -145,7 +143,8 @@ const ProductDetailsPage = async ({
                 সর্বনিম্ন দাম
               </span>
               <div className="text-2xl font-bold text-emerald-600">
-                {minPrice} <span className="text-sm font-normal">টাকা</span>
+                {minPrice.toLocaleString("bn-BD")}{" "}
+                <span className="text-sm font-normal">টাকা</span>
               </div>
               <p className="text-xs text-gray-400 pt-2 border-t border-gray-50">
                 সবচেয়ে কম দামের বাজার
@@ -157,7 +156,8 @@ const ProductDetailsPage = async ({
                 সর্বাধিক দাম
               </span>
               <div className="text-2xl font-bold text-red-500">
-                {maxPrice} <span className="text-sm font-normal">টাকা</span>
+                {maxPrice.toLocaleString("bn-BD")}{" "}
+                <span className="text-sm font-normal">টাকা</span>
               </div>
               <p className="text-xs text-gray-400 pt-2 border-t border-gray-50">
                 সবচেয়ে বেশি দামের বাজার
@@ -167,7 +167,8 @@ const ProductDetailsPage = async ({
             <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-1">
               <span className="text-xs text-gray-400 font-medium">গড় দাম</span>
               <div className="text-2xl font-bold text-emerald-600">
-                {avgPrice} <span className="text-sm font-normal">টাকা</span>
+                {avgPrice.toLocaleString("bn-BD")}{" "}
+                <span className="text-sm font-normal">টাকা</span>
               </div>
               <p className="text-xs text-gray-400 pt-2 border-t border-gray-50">
                 প্রতি কেজি-এর হিসাব
@@ -211,13 +212,13 @@ const ProductDetailsPage = async ({
                           {item.division}
                         </td>
                         <td className="py-4 px-4 sm:px-6 text-center">
-                          {item.min} টাকা
+                          {item.min.toLocaleString("bn-BD")} টাকা
                         </td>
                         <td className="py-4 px-4 sm:px-6 text-center">
-                          {item.max} টাকা
+                          {item.max.toLocaleString("bn-BD")} টাকা
                         </td>
                         <td className="py-4 px-4 sm:px-6 text-right font-bold text-gray-900">
-                          {itemAvg} টাকা
+                          {Number(itemAvg).toLocaleString("bn-BD")} টাকা
                         </td>
                       </tr>
                     );

@@ -5,12 +5,12 @@ import React, { useEffect, useState } from "react";
 interface CategoryDropDownProps {
   data: IDropdown[];
   categorySort?: IDropdown[];
-  setCategorySort?: React.Dispatch<React.SetStateAction<IDropdown[]>>;
+  setCategorySort: React.Dispatch<React.SetStateAction<IDropdown[]>>;
 }
 
 const CategoryDropDownPage = ({
   data,
-  categorySort,
+  
   setCategorySort,
 }: CategoryDropDownProps) => {
   const [sortBy, setSortBy] = useState<string>("default");
