@@ -1,24 +1,51 @@
-import React from "react";
+"use client";
+import { IDropdown } from "@/app/category/[categoryId]/page";
+import React, { useEffect, useState } from "react";
 
-const CategoryDropDownPage = () => {
+interface CategoryDropDownProps {
+  data: IDropdown[];
+  categorySort?: IDropdown[];
+  setCategorySort?: React.Dispatch<React.SetStateAction<IDropdown[]>>;
+}
+
+const CategoryDropDownPage = ({
+  data,
+  categorySort,
+  setCategorySort,
+}: CategoryDropDownProps) => {
+  const [sortBy, setSortBy] = useState<string>("default");
+  // console.log(sortBy, "sortBy");
+
+  useEffect(() => {
+    const sortedData = [...data];
+    if (sortBy === "price-asc") {
+      sortedData.sort((a, b) => Number(a.today) - Number(b.today));
+    } else if (sortBy === "price-desc") {
+      sortedData.sort((a, b) => Number(b.today) - Number(a.today));
+    }
+    setCategorySort(sortedData);
+  }, [sortBy, data, setCategorySort]);
+
+  // console.log(sortedData, "asdg");
+
   return (
-    <div className="flex items-center justify-between gap-2 sm:gap-3">
-      <label
-        htmlFor="sort-select"
-        className="text-xs sm:text-sm text-[#6B726A] font-normal whitespace-nowrap"
-      >
-        সাজান
-      </label>
-
-      <select
-        id="sort-select"
-        defaultValue="default"
-        className="select select-sm h-8 min-h-8 sm:h-9 sm:min-h-9 w-44 sm:w-auto bg-white border border-[#DCDED9] rounded-lg text-xs sm:text-sm font-medium text-[#222522] focus:outline-none focus:border-gray-400 cursor-pointer"
-      >
-        <option value="default">ডিফল্ট</option>
-        <option value="price-asc">দাম: কম থেকে বেশি</option>
-        <option value="price-desc">দাম: বেশি থেকে কম</option>
-      </select>
+    <div>
+      <div className="px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+        <div className="flex items-center gap-2 self-end sm:self-auto">
+          <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600">
+            <span>সাজান:</span>
+          </div>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="text-xs sm:text-sm font-medium text-slate-800 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-blue-500 cursor-pointer"
+          >
+            <option value="default">ডিফল্ট</option>
+            <option value="price-asc">দাম: কম থেকে বেশি</option>
+            <option value="price-desc">দাম: বেশি থেকে কম</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
