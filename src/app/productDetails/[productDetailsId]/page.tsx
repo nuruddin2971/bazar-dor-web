@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface IMarket {
@@ -35,7 +36,6 @@ const ProductDetailsPage = async ({
 }) => {
   const { productDetailsId } = await params;
 
-  // console.log("product details page",productDetailsId);
   const res = await fetch(
     `https://openapi.programming-hero.com/api/bazardor/products/${productDetailsId}`,
     { cache: "no-store" },
@@ -44,17 +44,33 @@ const ProductDetailsPage = async ({
   const data = await res.json();
   const product: IProduct = data;
 
-  const markets = product.markets;
+  console.log("product from category", product);
+  if (!product || product?.error) {
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+        <h1 className="text-6xl font-bold text-gray-800 mb-4">404</h1>
+        <p className="text-xl text-gray-600 mb-6">Page is invalid!</p>
+        <Link href={"/"}>
+          <button className="btn btn-active btn-success btn-sm sm:btn-md flex-1 sm:flex-none">
+            হোম পেজে ফিরে যান
+          </button>
+        </Link>
+      </div>
+    );
+  }
 
-  const minPrice = markets.length
+  const markets = product.markets;
+  console.log("markets from category", markets);
+
+  const minPrice = markets?.length
     ? Math.min(...markets.map((m) => m.min))
     : product.today;
 
-  const maxPrice = markets.length
+  const maxPrice = markets?.length
     ? Math.max(...markets.map((m) => m.max))
     : product.today;
 
-  const avgPrice = markets.length
+  const avgPrice = markets?.length
     ? Math.round(
         markets.reduce((acc, m) => acc + (m.min + m.max) / 2, 0) /
           markets.length,
@@ -89,8 +105,8 @@ const ProductDetailsPage = async ({
                 {product.categoryNameBn}
               </p>
               <p className="text-xs sm:text-sm text-gray-500 pt-1">
-                গতকালের তুলনায় আজ দাম 
-                {product.change.dir === "up" ? " বেড়েছে " : " কমেছে "}
+                গতকালের তুলনায় আজ দাম
+                {product.change?.dir === "up" ? " বেড়েছে " : " কমেছে "}
                 <span className="font-semibold text-gray-700">
                   {priceDiff} টাকা
                 </span>
@@ -121,11 +137,9 @@ const ProductDetailsPage = async ({
           </div>
         </div>
 
-        {/* Price Summary Grid */}
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-gray-900">দামের সারসংক্ষেপ</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {/* Minimum Price */}
             <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-1">
               <span className="text-xs text-gray-400 font-medium">
                 সর্বনিম্ন দাম
@@ -138,7 +152,6 @@ const ProductDetailsPage = async ({
               </p>
             </div>
 
-            {/* Maximum Price */}
             <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-1">
               <span className="text-xs text-gray-400 font-medium">
                 সর্বাধিক দাম
@@ -151,7 +164,6 @@ const ProductDetailsPage = async ({
               </p>
             </div>
 
-            {/* Average Price */}
             <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-1">
               <span className="text-xs text-gray-400 font-medium">গড় দাম</span>
               <div className="text-2xl font-bold text-emerald-600">
@@ -164,7 +176,6 @@ const ProductDetailsPage = async ({
           </div>
         </div>
 
-        {/* Market Data Table */}
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-gray-900">
             বাজারভিত্তিক আজকের দাম
@@ -186,7 +197,7 @@ const ProductDetailsPage = async ({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50 text-gray-700 font-medium">
-                  {markets.map((item, idx) => {
+                  {markets?.map((item, idx) => {
                     const itemAvg = ((item.min + item.max) / 2).toFixed(2);
                     return (
                       <tr

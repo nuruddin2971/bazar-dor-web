@@ -55,7 +55,7 @@ const SignInPage = () => {
         </p>
       </div>
 
-      {/* Main Card */}
+  
       <div className="w-full max-w-md bg-white rounded-2xl border border-gray-200/80 p-6 sm:p-8 shadow-sm">
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
@@ -100,7 +100,7 @@ const SignInPage = () => {
           </span>
         </div>
 
-        {/* Social Login Buttons */}
+     
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
@@ -155,7 +155,7 @@ const SignInPage = () => {
         </div>
       </div>
 
-      {/* Back to Home Link */}
+   
       <Link
         href="/"
         className="mt-6 text-xs text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1"

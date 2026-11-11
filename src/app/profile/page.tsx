@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-[#f4f6f4] flex flex-col items-center justify-start p-4 sm:p-8">
-      {/* Page Title & Subtitle */}
+   
       <div className="text-center mb-6 w-full max-w-xl">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
           আমার প্রোফাইল
@@ -39,9 +39,9 @@ const ProfilePage = () => {
         </p>
       </div>
 
-      {/* Main Container */}
+
       <div className="w-full max-w-xl flex flex-col gap-4">
-        {/* User Info Card */}
+     
         <div className="bg-white rounded-2xl border border-gray-200/80 p-5 sm:p-6 shadow-sm flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <Link href={"/profile"}>
@@ -60,7 +60,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Edit Section Card */}
+       
         <div className="bg-white rounded-2xl border border-gray-200/80 p-5 sm:p-6 shadow-sm flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm sm:text-base font-bold text-gray-900">

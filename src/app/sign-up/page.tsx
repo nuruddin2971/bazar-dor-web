@@ -32,7 +32,7 @@ const SignUpPage = () => {
       redirect("/sign-in");
     }
 
-    if (error) {    
+    if (error) {
       toast.error("Something went error!");
       console.log(error);
     }
@@ -42,7 +42,6 @@ const SignUpPage = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    // console.log(data, "from sign in");
   };
 
   const handleGithubSignUp = async () => {

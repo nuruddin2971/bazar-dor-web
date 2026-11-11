@@ -1,4 +1,6 @@
+import CategoryDropDownPage from "@/components/CategoryDropDown";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
 interface IDropdown {
@@ -42,43 +44,7 @@ const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
             </div>
           </div>
 
-          <div className="dropdown dropdown-bottom dropdown-end flex items-center gap-2 w-full sm:w-auto justify-end">
-            <span className="text-sm sm:text-base text-gray-600 font-medium">
-              সাজান
-            </span>
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-sm sm:btn-md bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-normal rounded-xl px-4 m-0"
-            >
-              ডিফল্ট
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 ml-1 opacity-70"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={-1}
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm border border-gray-100"
-            >
-              <li>
-                <a>দাম: কম থেকে বেশি</a>
-              </li>
-              <li>
-                <a>দাম: বেশি থেকে কম</a>
-              </li>
-            </ul>
-          </div>
+          <CategoryDropDownPage></CategoryDropDownPage>
         </div>
 
         <div className="text-sm sm:text-base text-gray-500 mt-1">

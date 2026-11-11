@@ -30,19 +30,6 @@ export default async function Home() {
     (product) => product.change?.dir === "down",
   );
 
-  // const allProducts = data.map((product) => (
-  //   <div key={product.id}>
-  //     <AllProducts allProducts={allProducts}></AllProducts>
-  //   </div>
-  // ));
-
-  // const allProducts = data.map((product) => (
-  //   <div key={product.id}>
-  //     <h2>{product.nameBn}</h2>
-  //     <p>Price: {product.today} টাকা</p>
-  //     <p>Unit: {product.unit}</p>
-  //   </div>
-  // ));
 
   return (
     <div>
